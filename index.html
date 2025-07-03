@@ -1,0 +1,207 @@
+<!-- Example HTML and CSS for a circular button with an SVG arrow -->
+<style>
+.image-slider {
+  width: 255px;
+  height: 400px;
+  margin: 80px auto 12px auto; /* Increased margin-top */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000000;      /* Blue stroke */
+  background: #f5faff;            /* Light blue background */
+  border-radius: 16px;            /* Optional: rounded corners */
+}
+.image-placeholder {
+  width: 233px;   /* or any px value smaller than .image-slider */
+  height: 200px;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 179;
+  margin: auto;
+  border-radius: 12px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(.77,0,.18,1), opacity 0.4s;
+  opacity: 0;
+  transform: translateX(100%);
+  z-index: 1;
+}
+.image-placeholder.active {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.arrow-btn {
+  --thumb-size: 32px;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  border: 2px solid #000000;
+  border-radius: 50%;
+  background-color: currentColor;
+  color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 4px 0 0 #222;
+  cursor: pointer;
+  padding: 0;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.arrow-btn:hover,
+.arrow-btn:active {
+  transform: translate(5px, 4px);
+  box-shadow: none;
+}
+.arrow-btn svg {
+  width: 60%;
+  height: 60%;
+  display: block;
+  fill: white;
+}
+.slider-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 2;
+}
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #3498db;
+  background: #9ed3f6; /* <-- fixed */
+  display: inline-block;
+  transition: 0.2s, border-color 0.2s;
+}
+.indicator.active {
+  background: #3498db;
+  border-color: #3498db;
+}
+.slider-header {
+  width: 100%;
+  text-align: center;         /* Center the header text */
+  margin-top: 120px;           /* Space above header */
+  position: relative;         /* Allows for further positioning if needed */
+  z-index: 3;                 /* Make sure it sits above background */
+}
+
+.slider-header h2 {
+  font-size: 20px;          /* Adjust title size */
+  color: #222;              /* Adjust title color */
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2.1px;
+  font-variant: small-caps; /* Enable small caps */
+  margin-bottom: 8px; /* or 0 to remove */
+}
+
+.slider-description {
+  text-align: center;
+  color: #555;
+  font-size: 12px;
+  letter-spacing: 1.03px;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-align: justify;
+  text-justify: inter-word;
+  max-width: 320px;             /* Optional: limit max width */
+  padding-left: 21px;
+  padding-right: 23px;
+  margin-top: 0; /* or adjust as needed */
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+<div class="image-slider">
+  <div class="image-placeholder active">
+    <img src="assets/image1.jpg" alt="Image 1" style="height:100%;object-fit:contain;border-radius:10px;">
+    <div class="image-caption"></div>
+  </div>
+  <div class="image-placeholder">
+    <img src="assets/image2.jpg" alt="Image 2" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <div class="image-caption"></div>
+  </div>
+  <div class="image-placeholder">
+    <img src="assets/image3.jpg" alt="Image 3" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <div class="image-caption"></div>
+  </div>
+
+  <!-- Add your header div here -->
+  <div class="slider-header">
+    <h2>rigzin dorjee rinpoche</h2>
+    <p class="slider-description">
+      This is a short description or subtitle for your slider. You can adjust the text, color, and spacing in CSS.
+    </p>
+  </div>
+
+  <div class="slider-indicators">
+    <span class="indicator active"></span>
+    <span class="indicator"></span>
+    <span class="indicator"></span>
+  </div>
+</div>
+<div class="slider-controls">
+  <button class="arrow-btn" id="prev-btn" aria-label="Previous">
+    <svg viewBox="0 0 24 24"><path d="M16 5l-8 7 8 7"/></svg>
+  </button>
+  <button class="arrow-btn" id="next-btn" aria-label="Next">
+    <svg viewBox="0 0 24 24"><path d="M8 5l8 7-8 7"/></svg>
+  </button>
+</div>
+<script>
+const placeholders = document.querySelectorAll('.image-placeholder');
+const indicators = document.querySelectorAll('.indicator');
+let current = 0;
+
+function showImage(next) {
+  if (next === current) return;
+  const prev = current;
+  const direction = next > prev || (prev === placeholders.length - 1 && next === 0) ? 1 : -1;
+
+  // Remove active from all, add slide-out to previous
+  placeholders[prev].classList.remove('active');
+  placeholders[prev].classList.remove('slide-out-left');
+  placeholders[prev].classList.remove('slide-out-right');
+  placeholders[prev].classList.add(direction === 1 ? 'slide-out-left' : 'slide-out-right');
+
+  // Prepare next slide
+  placeholders[next].classList.remove('slide-out-left', 'slide-out-right');
+  placeholders[next].classList.add('active');
+
+  indicators.forEach((el, i) => el.classList.toggle('active', i === next));
+  current = next;
+}
+
+document.getElementById('prev-btn').onclick = () => {
+  let next = (current + placeholders.length - 1) % placeholders.length;
+  showImage(next);
+};
+document.getElementById('next-btn').onclick = () => {
+  let next = (current + 1) % placeholders.length;
+  showImage(next);
+};
+
+// Remove slide-out class after animation
+placeholders.forEach(placeholder => {
+  placeholder.addEventListener('transitionend', () => {
+    placeholder.classList.remove('slide-out-left', 'slide-out-right');
+    if (!placeholder.classList.contains('active')) {
+      placeholder.style.display = 'none';
+    } else {
+      placeholder.style.display = 'flex';
+    }
+  });
+});
+</script>
