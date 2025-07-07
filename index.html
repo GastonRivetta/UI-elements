@@ -1,209 +1,95 @@
-<!-- Example HTML and CSS for a circular button with an SVG arrow -->
-<style>
-.image-slider {
-  width: 255px;
-  height: 400px;
-  margin: 80px auto 12px auto; /* Increased margin-top */
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #000000;      /* Blue stroke */
-  background: #f5faff;            /* Light blue background */
-  border-radius: 16px;            /* Optional: rounded corners */
-}
-.image-placeholder {
-  width: 233px;   /* or any px value smaller than .image-slider */
-  height: 200px;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 179;
-  margin: auto;
-  border-radius: 12px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.4s cubic-bezier(.77,0,.18,1), opacity 0.4s;
-  opacity: 0;
-  transform: translateX(100%);
-  z-index: 1;
-}
-.image-placeholder.active {
-  display: flex;
-  opacity: 1;
-  transform: translateX(0);
-  z-index: 2;
-}
-.slider-controls {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
-.arrow-btn {
-  --thumb-size: 32px;
-  height: var(--thumb-size);
-  width: var(--thumb-size);
-  border: 2px solid #000000;
-  border-radius: 50%;
-  background-color: currentColor;
-  color: #3498db;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 5px 4px 0 0 #222;
-  cursor: pointer;
-  padding: 0;
-  transition: box-shadow 0.15s, transform 0.15s;
-}
-.arrow-btn:hover,
-.arrow-btn:active {
-  transform: translate(5px, 4px);
-  box-shadow: none;
-}
-.arrow-btn svg {
-  width: 60%;
-  height: 60%;
-  display: block;
-  fill: white;
-}
-.slider-indicators {
-  position: absolute;
-  bottom: 12px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  z-index: 2;
-}
-.indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1px solid #3498db;
-  background: #9ed3f6; /* <-- fixed */
-  display: inline-block;
-  transition: 0.2s, border-color 0.2s;
-}
-.indicator.active {
-  background: #3498db;
-  border-color: #3498db;
-}
-.slider-header {
-  width: 100%;
-  text-align: center;
-  margin-top: 110px;
-  margin-left: 10px;   /* Add left margin */
-  margin-right: 10px;  /* Add right margin */
-  position: relative;
-  z-index: 3;
-}
-
-.slider-header h2 {
-  font-size: 19px;          /* Adjust title size */
-  color: #222;              /* Adjust title color */
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 700;
-  letter-spacing: 2.1px;
-  font-variant: small-caps; /* Enable small caps */
-  margin-bottom: 6px; /* or 0 to remove */
-}
-
-.slider-description {
-  text-align: center;
-  color: #555;
-  font-size: 12px;
-  letter-spacing: 1.0px;
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: left;
-  max-width: 320px;
-  padding-left: 17px;
-  padding-right: 14px;
-  margin-top: 0;
-  line-height: 1.4; /* <-- Add this for more leading */
-}
-</style>
-
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
-
-<div class="image-slider">
-  <div class="image-placeholder active">
-    <img src="assets/image1.jpg" alt="Image 1" style="height:100%;object-fit:contain;border-radius:10px;">
-    <div class="image-caption"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stacked Flex Divs</title>
+  <link rel="stylesheet" href="https://use.typekit.net/lmg8nns.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mini-container.css">
+</head>
+<body>
+  <nav class="main-navbar">
+    <div class="dropdown">
+      <button class="arrow-btn-drpdwn" id="dropdownMenuBtn" aria-haspopup="true" aria-expanded="false">
+        <img src="assets/arrow-right.svg" alt="dropdown arrow" style="width:18px;height:18px;margin-left:3px;">
+      </button>
+      <div class="dropdown-content" id="dropdownContent">
+        <a href="#">store</a>
+        <a href="#">about</a>
+        <a href="#">contact</a>
+        <a href="#">sale</a>
+      </div>
+    </div>
+    <h1>ui button test</h1>
+  </nav>
+  <div class="grandparent-container">
+    <div class="mini-outer-container">
+      <div class="container-mini">
+        <div class="carousel-slide-mini active">
+          <img class="container-miniimage" src="assets/image1.jpg" alt="Mini Carousel Image 1">
+          <div class="container-miniheader">pipeline</div>
+          <div class="container-minidescription"> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        </div>
+        <div class="carousel-slide-mini">
+          <img class="container-miniimage" src="assets/image2.jpg" alt="Mini Carousel Image 2">
+          <div class="container-miniheader">teahupo'o</div>
+          <div class="container-minidescription">labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        </div>
+        <div class="carousel-slide-mini">
+          <img class="container-miniimage" src="assets/image3.jpg" alt="Mini Carousel Image 3">
+          <div class="container-miniheader">cloud break</div>
+          <div class="container-minidescription">labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        </div>
+        <div class="slider-indicators-mini">
+          <span class="indicator-mini active"></span>
+          <span class="indicator-mini"></span>
+          <span class="indicator-mini"></span>
+        </div>
+      </div>
+       <div class="arrow-btn-group-mini">
+        <button class="arrow-btn-mini" id="prev-btn-mini" aria-label="Previous">
+          <img src="assets/arrow-left.svg" alt="Previous-btn-mini" style="width:45%;height:45%;">
+        </button>
+        <button class="arrow-btn-mini" id="next-btn-mini" aria-label="Next">
+          <img src="assets/arrow-right.svg" alt="next" style="width:45%;height:45%;">
+        </button>
+      </div>
+      <div class="mini_photoslide"></div>
+    </div>
+    <div class="lrg-outer-container">
+      <div class="container-LRG">
+        <div class="carousel-slide active">
+          <img class="container-LRGimage" src="assets/image4.jpg" alt="Carousel Image 1">
+          <div class="container-LRGheader">gun surfboard</div>
+          <div class="container-LRGdescription">Length, float and foam. Three things that you will be thanking the big man above when things get a little dicey out in the aquamarine playpen. Search for the peak, get in early, but don't late drop like JJF cause you will be wishing your sword was 12 inches smaller. </div>
+        </div>
+        <div class="carousel-slide">
+          <img class="container-LRGimage" src="assets/image5.jpg" alt="Carousel Image 2">
+          <div class="container-LRGheader">tow board</div>
+          <div class="container-LRGdescription">Is that you God? No, it's Laird Hamilton on a tug boat snaking you and almost castrating you crew. Tow generation benefits come with a steep price, literately and figuratively. Don't let your inner baby ego convince you that 10k and 400-made-barrels is worth the persecution. </div>
+        </div>
+        <div class="carousel-slide">
+          <img class="container-LRGimage" src="assets/image6.jpg" alt="Carousel Image 3">
+          <div class="container-LRGheader">step-up</div>
+          <div class="container-LRGdescription"> Are you going to step it up? Slabby pits, late drops, shallow reef. Thats what narrow dims, round tails and some beef in the chest is used for. This weapon of choice should only be weilded by only greats, for the consequences are more than a bruised ego.    </div>
+        </div>
+        <div class="slider-indicators">
+          <span class="indicator active"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+        </div>
+      </div>
+      <div class="arrow-btn-group">
+        <button class="arrow-btn" id="prev-btn" aria-label="Previous">
+          <img src="assets/arrow-left.svg" alt="Previous" style="width:45%;height:45%;">
+        </button>
+        <button class="arrow-btn" id="next-btn" aria-label="Next">
+          <img src="assets/arrow-right.svg" alt="Next" style="width:45%;height:45%;">
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="image-placeholder">
-    <img src="assets/image2.jpg" alt="Image 2" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-    <div class="image-caption"></div>
-  </div>
-  <div class="image-placeholder">
-    <img src="assets/image3.jpg" alt="Image 3" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-    <div class="image-caption"></div>
-  </div>
-
-  <!-- Add your header div here -->
-  <div class="slider-header">
-    <h2>rigzin dorjee rinpoche</h2>
-    <p class="slider-description">
-      H.H. Rigzin Dorjee Rinpoche is the founder and head of the Nyingma Institute, Gangtok, Sikkim, India.
-    </p>
-  </div>
-
-  <div class="slider-indicators">
-    <span class="indicator active"></span>
-    <span class="indicator"></span>
-    <span class="indicator"></span>
-  </div>
-</div>
-<div class="slider-controls">
-  <button class="arrow-btn" id="prev-btn" aria-label="Previous">
-    <img src="assets/arrow-left.svg" alt="Previous" style="width:45%;height:45%;">
-  </button>
-  <button class="arrow-btn" id="next-btn" aria-label="Next">
-    <img src="assets/arrow-right.svg" alt="Next" style="width:45%;height:45%;">
-  </button>
-</div>
-<script>
-const placeholders = document.querySelectorAll('.image-placeholder');
-const indicators = document.querySelectorAll('.indicator');
-let current = 0;
-
-function showImage(next) {
-  if (next === current) return;
-  const prev = current;
-  const direction = next > prev || (prev === placeholders.length - 1 && next === 0) ? 1 : -1;
-
-  // Remove active from all, add slide-out to previous
-  placeholders[prev].classList.remove('active');
-  placeholders[prev].classList.remove('slide-out-left');
-  placeholders[prev].classList.remove('slide-out-right');
-  placeholders[prev].classList.add(direction === 1 ? 'slide-out-left' : 'slide-out-right');
-
-  // Prepare next slide
-  placeholders[next].classList.remove('slide-out-left', 'slide-out-right');
-  placeholders[next].classList.add('active');
-
-  indicators.forEach((el, i) => el.classList.toggle('active', i === next));
-  current = next;
-}
-
-document.getElementById('prev-btn').onclick = () => {
-  let next = (current + placeholders.length - 1) % placeholders.length;
-  showImage(next);
-};
-document.getElementById('next-btn').onclick = () => {
-  let next = (current + 1) % placeholders.length;
-  showImage(next);
-};
-
-// Remove slide-out class after animation
-placeholders.forEach(placeholder => {
-  placeholder.addEventListener('transitionend', () => {
-    placeholder.classList.remove('slide-out-left', 'slide-out-right');
-    if (!placeholder.classList.contains('active')) {
-      placeholder.style.display = 'none';
-    } else {
-      placeholder.style.display = 'flex';
-    }
-  });
-});
-</script>
+  <script src="carousel.js"></script>
+  <script src="mini-carousel.js"></script>
+</body>
+</html>

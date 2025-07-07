@@ -1,0 +1,139 @@
+.container-mini {
+  background-color: #f9fdff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 400px;           /* Ensures consistent height */
+  width: 350px;
+  position: relative;
+  border: 2px solid #5FBAE9;
+  border-radius: 15px;
+  padding: 18px;
+  box-sizing: border-box;
+  overflow: hidden;        /* Prevents overflow if needed */
+}
+
+.carousel-slide-mini {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;            /* Ensures slide fills container */
+}
+
+.carousel-slide-mini.active {
+  display: flex;
+}
+
+.container-miniimage {
+  width: 100vp;
+  height: 180px;           /* or whatever fits your design */
+  object-fit: fill-proportional; /* Ensures image fits well */
+  border-radius: 8px;
+  margin-bottom: 5px;
+  background: rgb(255, 252, 246)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-miniheader {
+  height: 50px;
+  width: 580px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  font-family: source-sans-pro, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  justify-content: center;
+  font-size: 36px;
+  color: #F19545;
+  letter-spacing: 6px;
+  font-variant: small-caps;
+}
+
+.container-minidescription {
+  flex: 1;
+  height: 80px;
+  width: 300px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  color: #43a7d9;
+  font-size: 14px;
+  font-family: source-sans-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.slider-indicators-mini {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 0px;
+}
+
+.indicator-mini {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffcfa5;
+  display: inline-block;
+}
+
+.indicator-mini.active {
+  background: #F19545;
+}
+
+.arrow-btn-mini {
+  --thumb-size: 32px;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  border: 2px solid #222;
+  border-radius: 50%;
+  background-color: #fbb273;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 4px 0 0 #222;
+  cursor: pointer;
+  padding: 0;
+  transition: box-shadow 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+.arrow-btn-mini:active {
+  transform: translate(5px, 4px);
+  box-shadow: none;
+}
+
+.arrow-btn-group-mini {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  padding-left: 60px;
+  text-align: center;
+   font-family: source-sans-pro, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  justify-content: center;
+  font-size: 36px;
+  color: #F19545;
+  letter-spacing: 6px;
+  font-variant: small-caps;
+}
+
+/* .arrow-btn-mini styles should be defined here, similar to .arrow-btn but for mini */
